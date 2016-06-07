@@ -1,2 +1,4 @@
 # AStarNXC
-AStar implementation in NXC
+AStar implementation in NXJ
+nxjc AStar.java
+nxj -r AStar
