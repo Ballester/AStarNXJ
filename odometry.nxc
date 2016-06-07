@@ -1,9 +1,0 @@
-#define MOVE_TIME 4000 // Time for a straight move
-
-task main() {
-     float n_centimetros = 50;
-     float perimetro_roda = 13.7;
-     float rotations = (n_centimetros*360.0)/perimetro_roda;
-     long l_rot = rotations;
-     RotateMotor(OUT_AB, 75, l_rot);
-}
