@@ -1,3 +1,4 @@
+package AStar;
 
 public class Position {
 

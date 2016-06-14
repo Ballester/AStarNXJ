@@ -1,3 +1,4 @@
+package AStar;
 import java.util.ArrayList;
 
 public class Node implements Comparable<Node>{
@@ -10,7 +11,7 @@ public class Node implements Comparable<Node>{
 		this.x = x;
 		this.y = y;
 		
-		this.h = AStar.manhattanHeuristic(x, y);
+		this.h = AStarTest.manhattanHeuristic(x, y);
 		this.path = new ArrayList<>();
 	}
 	
@@ -26,25 +27,21 @@ public class Node implements Comparable<Node>{
 		 * Add the current node to the path
 		 * Append to the successors list
 		 */
-		Node new_node = new Node(this.x+1, this.y);
-		new_node.setPath(this.path);
-		new_node.addToPath(this.x, this.y);
-		successors.add(new_node);
+		successors.add(new Node(this.x+1, this.y));
+		successors.get(0).setPath(this.path);
+		successors.get(0).addToPath(this.x, this.y);
 		
-		new_node = new Node(this.x-1, this.y);
-		new_node.setPath(this.path);
-		new_node.addToPath(this.x, this.y);
-		successors.add(new_node);
+		successors.add(new Node(this.x-1, this.y));
+		successors.get(1).setPath(this.path);
+		successors.get(1).addToPath(this.x, this.y);
 		
-		new_node = new Node(this.x, this.y+1);
-		new_node.setPath(this.path);
-		new_node.addToPath(this.x, this.y);
-		successors.add(new_node);
+		successors.add(new Node(this.x, this.y+1));
+		successors.get(2).setPath(this.path);
+		successors.get(2).addToPath(this.x, this.y);
 		
-		new_node = new Node(this.x, this.y-1);
-		new_node.setPath(this.path);
-		new_node.addToPath(this.x, this.y);
-		successors.add(new_node);
+		successors.add(new Node(this.x, this.y-1));
+		successors.get(3).setPath(this.path);
+		successors.get(3).addToPath(this.x, this.y);
 		
 		return successors;
 	}
@@ -53,7 +50,7 @@ public class Node implements Comparable<Node>{
 	 * @return the total cost of this node
 	 */
 	public int getCost() {
-		return h + path.size();
+		return h + this.path.size();
 	}
 	
 	public int getH() {
@@ -63,7 +60,7 @@ public class Node implements Comparable<Node>{
 		this.h = h;
 	}
 	public int getG() {
-		return path.size();
+		return this.path.size();
 	}
 	
 	/*
@@ -76,7 +73,7 @@ public class Node implements Comparable<Node>{
 		return this.path;
 	}
 	public void setPath(ArrayList<Position> path) {
-		this.path = path;
+		this.path = new ArrayList<Position>(path);
 	}
 	
 	public int getX() {

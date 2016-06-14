@@ -1,3 +1,4 @@
+package AStar;
 /*
  * Interface for a robot in the AStar algorithm
  */
@@ -19,10 +20,10 @@ public interface Robot {
 	 */
 	public ArrayList<Position> checkForObstacle();
 	/*
-	 * Goes to a node, presumes it is one of the 4 successors of the present node
+	 * Goes to a position, presumes it is one of the 4 successors of the present node
 	 * @returns false if not a successor
 	 */
-	public boolean goToSuccessor(Node node);
+	public boolean goToSuccessor(Position position);
 	public int getX();
 	public int getY();
 }
